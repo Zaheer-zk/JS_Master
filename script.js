@@ -107,3 +107,22 @@ poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
 poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
 
 // Yes, we completed successfully
+
+// IIFE Immediately Invoke Function Expression
+
+(function () {
+  console.log(`Hello its a IIFE of old version`);
+})();
+
+// arrow functions of IIFE
+
+(() => {
+  console.log(`This one is Arrow Function`);
+})();
+
+// new IIFE
+
+{
+  const name = 'hello';
+  console.log(`${name} this one is from newly created IIFE`);
+}
