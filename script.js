@@ -67,62 +67,105 @@
 // //   };
 // // };
 
-// fun1(0.1, 100)();
+// // fun1(0.1, 100)();
 
-// ###################CHALLENGE
+// // ###################CHALLENGE
 
-const poll = {
-  question: 'Which is your favorite programming language',
-  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
-  answers: new Array(4).fill(0), // [0,0,0,0]
-  registerNewAnswer() {
-    const ans = prompt(
-      'What is your favourite programming language?\n' +
-        '0: JavaScript\n' +
-        '1: Python\n' +
-        '2: Rust\n' +
-        '3: C++\n' +
-        '(Write option number)'
-    );
-    // console.log(ans);
-    if (ans >= 0 && ans < 4) this.answers[ans]++;
+// const poll = {
+//   question: 'Which is your favorite programming language',
+//   options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+//   answers: new Array(4).fill(0), // [0,0,0,0]
+//   registerNewAnswer() {
+//     const ans = prompt(
+//       'What is your favourite programming language?\n' +
+//         '0: JavaScript\n' +
+//         '1: Python\n' +
+//         '2: Rust\n' +
+//         '3: C++\n' +
+//         '(Write option number)'
+//     );
+//     // console.log(ans);
+//     if (ans >= 0 && ans < 4) this.answers[ans]++;
 
-    this.displayResults(this.answers);
-  },
+//     this.displayResults(this.answers);
+//   },
 
-  displayResults(type = 'array') {
-    if (type === 'array') {
-      console.log(this.answers);
-    } else {
-      console.log(`Poll results are ${this.answers},`);
-    }
-  },
+//   displayResults(type = 'array') {
+//     if (type === 'array') {
+//       console.log(this.answers);
+//     } else {
+//       console.log(`Poll results are ${this.answers},`);
+//     }
+//   },
+// };
+
+// const ansPoll = document.querySelector('.poll');
+
+// ansPoll.addEventListener('click', poll.registerNewAnswer.bind(poll));
+
+// poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
+// poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
+
+// // Yes, we completed successfully
+
+// // IIFE Immediately Invoke Function Expression
+
+// (function () {
+//   console.log(`Hello its a IIFE of old version`);
+// })();
+
+// // arrow functions of IIFE
+
+// (() => {
+//   console.log(`This one is Arrow Function`);
+// })();
+
+// // new IIFE
+
+// {
+//   const name = 'hello';
+//   console.log(`${name} this one is from newly created IIFE`);
+// }
+
+// Closures
+
+const fun1 = function () {
+  let i = 0;
+
+  return function fun2() {
+    i++;
+    console.log(i);
+  };
 };
 
-const ansPoll = document.querySelector('.poll');
+const fun3 = fun1();
 
-ansPoll.addEventListener('click', poll.registerNewAnswer.bind(poll));
+fun3(); //1
+fun3(); //2
+fun3(); //3
 
-poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
-poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
+// Closures Example
 
-// Yes, we completed successfully
+let f;
 
-// IIFE Immediately Invoke Function Expression
+const g = function () {
+  const a = 20;
+
+  f = function () {
+    console.log(a * 2);
+  };
+};
+
+g();
+f();
+
+// CHALLENGE
 
 (function () {
-  console.log(`Hello its a IIFE of old version`);
+  const header = document.querySelector('h1');
+  header.style.color = 'black';
+
+  header.addEventListener('click', () => {
+    header.style.color = 'blue';
+  });
 })();
-
-// arrow functions of IIFE
-
-(() => {
-  console.log(`This one is Arrow Function`);
-})();
-
-// new IIFE
-
-{
-  const name = 'hello';
-  console.log(`${name} this one is from newly created IIFE`);
-}
